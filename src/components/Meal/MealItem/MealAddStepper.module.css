@@ -1,0 +1,49 @@
+.stepper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.input {
+  margin: auto;
+}
+
+.stepperButton {
+  background-color: #ffffff00;
+  font-size: 1.25rem;
+  color: #8a2b06;
+  outline: none;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  border: none;
+  width: 20px;
+  border-radius: 50%;
+  height: 20px;
+  cursor: pointer;
+}
+
+.stepperButton:disabled {
+  color: #dfb9aa;
+}
+.stepperButton:hover,
+.stepperButton:active {
+  color: #8a2b06;
+}
+
+.button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #8a2b06;
+  border: 1px solid #8a2b06;
+  color: white;
+  padding: 0.25rem 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.button:hover,
+.button:active {
+  background-color: #641e03;
+  border-color: #641e03;
+}
