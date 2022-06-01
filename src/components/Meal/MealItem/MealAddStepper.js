@@ -21,6 +21,7 @@ const MealAddStepper = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
         props.onAddToCart(+amountRef.current.outerText);
+        setAmount(1);
     };
 
     return (
