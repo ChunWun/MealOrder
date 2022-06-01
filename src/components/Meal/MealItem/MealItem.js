@@ -1,9 +1,21 @@
 import styles from "./MealItem.module.css";
-import React from "react";
+import React, { useContext } from "react";
 import MealAddStepper from "./MealAddStepper.js";
+import CartContext from "../../Context/CartContext";
 
 
 const MealItem = (props) => {
+    const cartCtx = useContext(CartContext);
+
+    const addToCartHandler = (amount) => {
+        cartCtx.addItem({
+            id: props.id,
+            name: props.name,
+            amount: amount,
+            price: props.price
+        });
+    };
+
     return (
         <React.Fragment>
             <li className={styles.meal}>
@@ -13,11 +25,11 @@ const MealItem = (props) => {
                         {props.description}
                     </div>
                     <div className={styles.price}>
-                        {props.price}
+                        ${props.price}
                     </div>
                 </div>
                 <div>
-                    <MealAddStepper />
+                    <MealAddStepper onAddToCart={addToCartHandler} />
                 </div>
             </li>
         </React.Fragment>
