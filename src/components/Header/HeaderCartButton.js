@@ -1,9 +1,30 @@
 import styles from "./HeaderCartButton.module.css";
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+import CartContext from "../Context/CartContext";
 
 const HeaderCartButton = (props) => {
+    const cartCtx = useContext(CartContext);
+    const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+
+    useEffect(() => {
+        if (cartCtx.item.length === 0) return;
+        setBtnIsHighlighted(true);
+
+        const timer = setTimeout(() => {
+            setBtnIsHighlighted(false);
+        }, 300)
+
+        return (() => {
+            if (timer) {
+                clearTimeout(timer);
+            }
+        })
+    }, [cartCtx])
+
+    const btnClasses = `${styles.button} ${btnIsHighlighted ? styles.bump : ''}`;
+
     return (
-        <button className={styles.button} onClick={props.onClick}>
+        <button className={btnClasses} onClick={props.onClick}>
             <span className={styles.icon}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -16,7 +37,7 @@ const HeaderCartButton = (props) => {
                 </svg>
             </span>
             <span>Your Cart</span>
-            <span className={styles.badge}>3</span>
+            <span className={styles.badge}>{cartCtx.item.length}</span>
         </button>
     );
 }

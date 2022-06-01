@@ -12,6 +12,10 @@
   font-weight: bold;
 }
 
+.bump {
+  animation: bump 300ms ease-out;
+}
+
 .button:hover,
 .button:active {
   background-color: #2c0d00;
